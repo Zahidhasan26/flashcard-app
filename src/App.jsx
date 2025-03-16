@@ -17,7 +17,6 @@ function App() {
   const [feedback, setFeedback] = useState('');
   const [streak, setStreak] = useState(0);
   const [bestStreak, setBestStreak] = useState(0);
-  const [masteredCards, setMasteredCards] = useState([]);
 
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
@@ -47,33 +46,20 @@ function App() {
     setUserInput('');
   };
 
-  const fuzzyMatch = (input, answer) => {
-    return input.trim().toLowerCase() === answer.trim().toLowerCase();
-  };
 
   const handleSubmit = () => {
     const currentAnswer = flashcards[currentCardIndex].answer;
     if (fuzzyMatch(userInput, currentAnswer)) {
-      setFeedback('✅ Correct!');
+      setFeedback('Correct Guess!');
       setStreak(streak + 1);
       if (streak + 1 > bestStreak) setBestStreak(streak + 1);
     } else {
-      setFeedback(`❌ Incorrect! The correct answer is: ${currentAnswer}`);
+      setFeedback(`Incorrect! The correct answer is: ${currentAnswer}`);
       setStreak(0);
     }
     setIsFlipped(true);
   };
 
-  const handleMasterCard = () => {
-    const masteredCard = flashcards[currentCardIndex];
-    setMasteredCards([...masteredCards, masteredCard]);
-    setFlashcards(flashcards.filter((_, index) => index !== currentCardIndex));
-    if (flashcards.length === 1) {
-      setCurrentCardIndex(0);
-    } else {
-      handleNext();
-    }
-  };
 
   return (
     <div className="flashcard-container">
@@ -107,7 +93,6 @@ function App() {
         <button onClick={handlePrevious}>Back</button>
         <button onClick={handleNext}>Next</button>
         <button onClick={handleShuffle}>Shuffle</button>
-        <button onClick={handleMasterCard}>Master</button>
       </div>
 
       <p>Current Streak: {streak} | Best Streak: {bestStreak}</p>
