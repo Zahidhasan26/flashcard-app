@@ -6,15 +6,10 @@
   gap: 20px;
 }
 
-/* Card container */
 .flashcard {
   width: 500px;
   height: 300px;
   cursor: pointer;
-}
-
-h1 {
-  line-height: 20px;
 }
 
 .flashcard-inner {
@@ -25,18 +20,16 @@ h1 {
   transition: transform 0.6s; 
 }
 
-
 .flashcard.flipped .flashcard-inner {
   transform: rotateY(180deg);
 }
 
-/* Front and back of the card */
 .flashcard-front,
 .flashcard-back {
   width: 100%;
   height: 100%;
   position: absolute;
-  backface-visibility: hidden; /* Hides the back of the card when flipped */
+  backface-visibility: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,32 +39,40 @@ h1 {
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
 }
 
-
 .flashcard-back {
   transform: rotateY(180deg);
   background-color: #f0f0f0;
 }
 
-/* Text styles */
-.flashcard p {
-  font-size: 20px;
-  margin: 0;
-  text-align: center;
+.feedback {
+  font-size: 18px;
+  font-weight: bold;
+  color: #28a745;
 }
 
-/* Button styles */
-.next-button {
+input {
+  padding: 8px;
+  width: 80%;
+  margin-top: 10px;
+}
+
+button {
   margin-top: 10px;
   padding: 10px 20px;
   font-size: 16px;
-  cursor: pointer;
   border: none;
   border-radius: 5px;
   background-color: #007bff;
   color: white;
+  cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.next-button:hover {
+button:hover {
   background-color: #0056b3;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
 }
