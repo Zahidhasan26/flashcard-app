@@ -49,7 +49,8 @@ function App() {
 
   const handleSubmit = () => {
     const currentAnswer = flashcards[currentCardIndex].answer;
-    if (fuzzyMatch(userInput, currentAnswer)) {
+    // Direct string comparison for answer checking
+    if (userInput.trim().toLowerCase() === currentAnswer.trim().toLowerCase()) {
       setFeedback('Correct Guess!');
       setStreak(streak + 1);
       if (streak + 1 > bestStreak) setBestStreak(streak + 1);
@@ -96,7 +97,6 @@ function App() {
       </div>
 
       <p>Current Streak: {streak} | Best Streak: {bestStreak}</p>
-      <p>Mastered Cards: {masteredCards.length}</p>
     </div>
   );
 }
